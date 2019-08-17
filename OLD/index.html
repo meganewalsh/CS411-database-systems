@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script
+              src="https://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="js/login.js"></script>
+        <script src="js/home.js"></script>
+
+        <title>DataSyndicate</title>
+    </head>
+    
+    
+    <body>
+		<nav class="navbar fixed-top navbar-dark bg-dark" id="main-heading">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="https://wiki.illinois.edu/wiki/display/cs411sfa18/DataSyndicate" target="_blank">DataSyndicate</a>
+				
+				<!-- Dropdown Menu for switching location"> -->
+				<form class="form-inline navbar-right">
+					<select id="location-select" class="form-control mr-sm-2"></select>
+					<button id="refresh-loc-btn" type="button" class="btn btn-primary mr-sm-5">Refresh</button>
+					<button id="login-button" type="button" class="btn btn-outline-success navbar-btn navbar-right" data-toggle="modal" data-target="#user-modal">Sign in</button>
+					<button id="logout-button" type="button" class="btn btn-outline-danger navbar-btn navbar-right">Sign out</button>
+				</form>
+			</div>
+		</nav>
+		<nav class="navbar"><h2 class="nav-header">`</h2></nav>
+
+        <div class="container-fluid" id="main">
+            <div class="container-fluid p-3" id="Currently Playing">
+                <h2 id="now-playing-heading">Now Playing</h2>
+                <div id="current-song">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <h3>Never Gonna Give You Up</h3>
+                    <h4>Rick Astley</h4>
+                    <p class="test-left">
+                        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">https://youtu.be/dQw4w9WgXcQ</a>
+                        <br />30 points
+                        <br />Submitted by ---
+                    </p>
+                </div>
+            </div>
+            
+            
+            <div class="container-fluid border border-secondary rounded p-3" id="songlist-container">
+                <h2 id="song-queue-heading">Song Queue</h2>
+                    <div class="btn-group">
+                     <button class="btn btn-primary" onclick="window.location='http://datasyndicate.web.illinois.edu/megan/song_request.html'">Add a Song </button>
+                     <button class="btn btn-secondary" onclick="window.location='http://datasyndicate.web.illinois.edu/megan/song_update.html'">Update a Song</button>
+                     <button class="btn btn-danger" onclick="window.location='http://datasyndicate.web.illinois.edu/megan/song_delete.html'">Delete a Song</button>
+                </div>
+                <table class="table table-hover mt-2">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Poster</th>
+                        </tr>
+                    </thead>
+                    <tbody id="songlist-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <!-- MODAL DIALOGS FOLLOW -->
+        <!-- Login and sign out-->
+        <div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="user-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="user-modal-label">Login or Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body form-group">
+                    <form id="login-form">
+                      <div class="form-group">
+                        <p>Username</p>
+                        <input type="text" class="form-control" id="username-input" placeholder="Enter username" minlength="6" maxlength="32" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Password</p>
+                        <input type="password" class="form-control" id="password-input" placeholder="Enter password" required>
+						<div id="login-fail-alert" class="alert alert-danger" role="alert">
+							<strong>Password is incorrect for user</strong> Try again
+						</div>
+
+                      </div>
+                      <button id="login-submit" type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

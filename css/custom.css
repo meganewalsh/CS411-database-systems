@@ -1,0 +1,12 @@
+.chat-scrollable {
+    overflow: scroll;
+    width: 100%;
+}
+
+.chat-input-container {
+    width: 100%;
+}
+
+.chat-input {
+    width: 100%;
+}

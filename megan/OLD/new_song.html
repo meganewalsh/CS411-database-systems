@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<!-- AJAX NEEDS NON SLIM JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="js/login.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(showLocation);
+				console.log("I've got permission!");
+			}
+			else {
+				$('#location').html('Geolocation is not supported by this browse.');
+			}
+		});
+
+		function showLocation(position) {
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			$.ajax({
+				type:'POST',
+				url: 'getLocation.php',
+				data: 'latitude='+latitude+'&longitude='+longitude,
+				success:function(msg) {
+					if(msg) {
+						$("#location").html(msg);
+						console.log("Got something");
+					}
+					else {
+						$("#location").html('Location unavailable');
+						console.log("Cannot get location :(");
+					}
+				}
+			});
+		}
+
+	</script>
+
+        <title>Request a new song</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Request a new song</h1>
+	    <h3>Your Location: <span id="location"></span></h3>
+            <div class="container">
+            <form method="post" action="new_song.php">
+                
+                <div class="form-group">
+                <h3>Please enter song, artist, and url</h3>
+                    <label for="song_name"><em>Song Title</em></label>
+                    <input type="text" placeholder="Song Title" name="song_name" id="song_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="artist_name"><em>Artist Name</em></label>
+                    <input type="text" placeholder="Artist Name" name="artist_name" id="artist_name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="url"><em>URL</em></label>
+                    <input type="text" placeholder="URL" name="url" id="url" required>
+                </div>
+                <div class="form-check"> 
+                    <button type="submit" class="btn btn-primary" id="login">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

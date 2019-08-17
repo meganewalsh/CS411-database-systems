@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+        <script
+              src="https://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="js/login.js"></script>
+        <script src="js/home.js"></script>
+        <script src="js/searchSongs_artists.js"></script>
+        <!--<script src="js/searchSongs_names.js"></script>-->
+        <script>
+            function getSongMatch(val) {
+                    	let selected_artist = $("#artist-select").val();
+    
+    $.get({
+    	url: "php/searchSongs_names.php",
+    	data: {art: selected_artist},
+    	success: function(options) {
+    		$("#name-select").html(options);
+    		$("#updatename-select").html(options);
+    	}
+	});
+            }
+        </script>
+        <title>[Placeholder] Home Page</title>
+    </head>
+    
+    
+    <body>
+        <div class="container" id="main">
+            <div class="container border border-primary rounded p-3 my-3" id="main-heading">
+                <h1>[Placeholder] Home Page</h1>
+                
+                <!-- Dropdown Menu for switching location"> -->
+        		<select id="location-select" style="width:auto; display:inline" class="form-control">
+        		</select>
+        		<button id="refresh-loc-btn" class="btn btn-primary">Refresh</button>
+        		<button id="login-button" class="btn btn-success float-right" data-toggle="modal" data-target="#user-modal">Sign in</button>
+        		<button id="logout-button" class="btn btn-danger float-right">Sign out</button>
+            </div>
+            
+            
+            <div class="container border border-primary rounded p-3 mb-3" id="Currently Playing">
+                <h2 id="now-playing-heading">Now Playing</h2>
+                <div id="current-song">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <h3>Never Gonna Give You Up</h3>
+                    <h4>Rick Astley</h4>
+                    <p class="test-left">
+                        <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank">https://youtu.be/dQw4w9WgXcQ</a>
+                        <br />30 points
+                        <br />Submitted by ---
+                    </p>
+                </div>
+            </div>
+            
+            
+            <div class="container border border-secondary rounded p-3 mb-3" id="songlist-container">
+                <h2 id="song-queue-heading">Song Queue</h2>
+                    <div class="btn-group">
+                     <button id="addsong-button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addsong-modal">Add a Song</button>
+                     <button id="updatesong-button" class="btn float-right" data-toggle="modal" data-target="#updatesong-modal">Update a Song</button>
+                     <button id="deletesong-button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deletesong-modal">Delete a Song</button>
+                    </div>
+                <table class="table table-hover mt-2">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Artist</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Submitter</th>
+                        </tr>
+                    </thead>
+                    <tbody id="songlist-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <!-- MODAL DIALOGS FOLLOW -->
+        <!-- Login and sign out-->
+        <div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="user-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="user-modal-label">Login or Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body form-group">
+                    <form id="login-form">
+                      <div class="form-group">
+                        <p>Username</p>
+                        <input type="text" class="form-control" id="username-input" placeholder="Enter username" minlength="6" maxlength="32" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Password</p>
+                        <input type="password" class="form-control" id="password-input" placeholder="Enter password" required>
+                      </div>
+                      <button id="login-submit" type="submit" class="btn btn-primary float-right">Submit</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add a song -->
+        <div class="modal fade" id="addsong-modal" tabindex="-1" role="dialog" aria-labelledby="addsong-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addsong-modal-label">Add a Song To This Queue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body form-group">
+                    <form id="addsong-form" method="post" action="php/song_request.php">
+                        
+                        <div class="form-group">
+                            <h3>Search for an Existing Song</h3>
+                            <label for="artist-select"><p>Artist:</p></label>
+                            <select id="artist-select" style="width:auto" class="form-control" onchange="getSongMatch()">
+        		            </select> 
+        		            
+        		            <br>
+        		            <label for="name-select"><p>Song:</p></label>
+                            <select id="name-select" style="width:auto" class="form-control">
+        		            </select>  
+        		        </div>
+        		      
+        		        <div class="form-check"> 
+                            <button type="submit" class="btn btn-primary float-right" id="addsong-submit">Submit Existing Song</button>
+                        </div>
+                    </form>
+                
+                    <form id="newsong-form" method="post" action="php/new_song.php">
+                        <div class="form-group">
+                            <br><br>
+                            <hr style="width: 100%; color:gray; height: 0.5px; background-color:gray;" />
+                            <h3>Don't see your song?</h3>
+                            <h4>Add it to our list!</h4>
+                            <label for="song_name"><p>Title</p></label>
+                            <input type="text" class="form-control" placeholder="Enter song title" name="song_name" id="add_songname" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artist_name"><p>Artist</p></label>
+                            <input type="text" class="form-control" placeholder="Enter artist name" name="artist_name" id="add_artistname" required>
+                        </div>
+                
+                        <div class="form-group" >
+                            <label for="url"><p>URL</p></label>
+                            <input type="text" class="form-control" placeholder="Enter URL" name="add_url" id="url" required>
+                        </div>
+                
+                        <div class="form-check"> 
+                            <button type="submit" class="btn btn-primary float-right" id="addsong-submit">Submit New Song</button>
+                        </div>
+                        
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Update a song -->
+        <div class="modal fade" id="updatesong-modal" tabindex="-1" role="dialog" aria-labelledby="updatesong-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="updatesong-modal-label">Update a Song's URL</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body form-group">
+                    <form id="updatesong-form" method="post" action="php/song_update.php">
+
+                        <div class="form-group">
+                            <label for="updateartist-select"><p>Select an Artist</p></label>
+                            <select id="updateartist-select" style="width:auto" class="form-control">
+        		            </select> 
+        		            
+        		            <br>
+        		            <label for="updatename-select"><p>Select a Song</p></label>
+                            <select id="updatename-select" style="width:auto" class="form-control">
+        		            </select> 
+                        </div>
+                
+                        <div class="form-group" >
+                            <label for="url"><p> New URL</p></label>
+                            <input type="text" class="form-control" placeholder="Enter new URL" name="url" id="update_url" required>
+                        </div>
+                
+                        <div class="form-check"> 
+                            <button type="submit" class="btn float-right" id="updatesong-submit">Update Song</button>
+                        </div>
+                        
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete a song -->
+        <div class="modal fade" id="deletesong-modal" tabindex="-1" role="dialog" aria-labelledby="deletesong-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deletesong-modal-label">Remove Your Song From The Queue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body form-group">
+                    <form id="deletesong-form" method="post" action="song_delete.php">
+
+                        <div class="form-group">
+                            <label for="deletename-select"><p>Select the Song</p></label>
+                            <select id="deletename-select" style="width:auto" class="form-control">
+        		            </select> 
+        		        </div>
+        		            
+                        <div class="form-check"> 
+                            <button type="submit" class="btn btn-danger float-right" id="deletesong-submit">Delete Song</button>
+                        </div>
+                        
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

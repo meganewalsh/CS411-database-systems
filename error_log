@@ -1,0 +1,15 @@
+[26-Oct-2018 13:33:11 America/Chicago] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home/datasyndicate/public_html/index.php on line 20
+[26-Oct-2018 13:33:37 America/Chicago] PHP Catchable fatal error:  Object of class mysqli could not be converted to string in /home/datasyndicate/public_html/index.php on line 20
+[26-Oct-2018 13:33:39 America/Chicago] PHP Catchable fatal error:  Object of class mysqli could not be converted to string in /home/datasyndicate/public_html/index.php on line 20
+[26-Oct-2018 13:33:39 America/Chicago] PHP Catchable fatal error:  Object of class mysqli could not be converted to string in /home/datasyndicate/public_html/index.php on line 20
+[26-Oct-2018 13:35:56 America/Chicago] PHP Catchable fatal error:  Object of class mysqli could not be converted to string in /home/datasyndicate/public_html/index.php on line 20
+[26-Oct-2018 13:46:27 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/datasyndicate/public_html/index.php on line 30
+[30-Oct-2018 19:26:05 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/datasyndicate/public_html/index.php on line 99
+[30-Oct-2018 19:29:06 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/datasyndicate/public_html/index.php on line 95
+[30-Oct-2018 19:29:15 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/datasyndicate/public_html/index.php on line 95
+[30-Oct-2018 19:29:16 America/Chicago] PHP Parse error:  syntax error, unexpected '.' in /home/datasyndicate/public_html/index.php on line 95
+[30-Oct-2018 21:19:35 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/datasyndicate/public_html/index.php on line 44
+[29-Nov-2018 08:19:40 America/Chicago] PHP Warning:  fopen(MINUTES.txt): failed to open stream: No such file or directory in /home/datasyndicate/public_html/php/COUNTDOWN_SONG_SCRIPT.php on line 3
+[29-Nov-2018 08:43:11 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home/datasyndicate/public_html/php/COUNTDOWN_SONG_SCRIPT.php on line 6
+[29-Nov-2018 08:43:25 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home/datasyndicate/public_html/php/COUNTDOWN_SONG_SCRIPT.php on line 6
+[29-Nov-2018 08:44:35 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home/datasyndicate/public_html/php/COUNTDOWN_SONG_SCRIPT.php on line 8
